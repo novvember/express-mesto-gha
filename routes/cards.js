@@ -5,12 +5,12 @@ const { createCard } = require('../controllers/createCard');
 const { putLike } = require('../controllers/putLike');
 const { deleteLike } = require('../controllers/deleteLike');
 
-const cardsRoute = express.Router();
+const cards = express.Router();
 
-cardsRoute.get('/', getAllCards);
-cardsRoute.get('/:cardId', getCard);
-cardsRoute.post('/', express.json(), createCard);
-cardsRoute.put('/:cardId/likes', putLike);
-cardsRoute.delete('/:cardId/likes', deleteLike);
+cards.get('/', getAllCards);
+cards.get('/:cardId', getCard);
+cards.post('/', express.json(), createCard);
+cards.put('/:cardId/likes', putLike);
+cards.delete('/:cardId/likes', deleteLike);
 
-module.exports = { cardsRoute };
+module.exports = { cards };

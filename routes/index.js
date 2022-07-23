@@ -1,10 +1,10 @@
 const express = require('express');
-const { usersRoute } = require('./usersRoute');
-const { cardsRoute } = require('./cardsRoute');
+const { users } = require('./users');
+const { cards } = require('./cards');
 
 const routes = express.Router();
 
-routes.use('/users', usersRoute);
-routes.use('/cards', cardsRoute);
+routes.use('/users', users);
+routes.use('/cards', cards);
 
 module.exports = { routes };
