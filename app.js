@@ -20,7 +20,7 @@ mongoose
 // временное решение авторизации пользователя
 app.use((req, res, next) => {
   req.user = {
-    _id: '62daed4f328e7939e76c5115',
+    _id: '62daee18dcd45a620eb5ae4b',
   };
 
   next();
