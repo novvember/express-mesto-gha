@@ -10,7 +10,7 @@ function handleError(err, req, res) {
 
   if (err.name === 'NotFoundError') {
     res.status(404).send({
-      message: 'Объект не найден',
+      message: err.message,
     });
     return;
   }
