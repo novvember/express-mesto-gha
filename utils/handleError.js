@@ -1,4 +1,6 @@
 function handleError(err, req, res) {
+  console.log(err.name);
+
   if (err.name === 'ValidationError') {
     res.status(400).send({
       message: 'Переданы некорректные данные',
@@ -6,7 +8,7 @@ function handleError(err, req, res) {
     return;
   }
 
-  if (err.name === 'CastError') {
+  if (err.name === 'CastError' && err.name === 'NotFoundError') {
     res.status(404).send({
       message: 'Объект не найден',
     });

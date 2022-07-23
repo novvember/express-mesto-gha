@@ -8,7 +8,7 @@ async function updateUser(req, res) {
     const user = await User.findByIdAndUpdate(
       userId,
       { name, about },
-      { new: true },
+      { new: true, runValidators: true },
     );
     res.send(user);
   } catch (err) {
