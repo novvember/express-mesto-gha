@@ -1,7 +1,14 @@
 function handleError(err, req, res) {
-  if (err.name === 'ValidationError' || err.name === 'CastError') {
+  if (err.name === 'CastError') {
     res.status(400).send({
-      message: 'Переданы некорректные данные',
+      message: 'Неверный формат переданных данных',
+    });
+    return;
+  }
+
+  if (err.name === 'ValidationError') {
+    res.status(400).send({
+      message: err.message,
     });
     return;
   }
