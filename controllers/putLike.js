@@ -1,7 +1,7 @@
 const { Card } = require('../models/card');
-const { handleError } = require('../utils/handleError');
+const { NotFoundError } = require('../errors/NotFoundError');
 
-async function putLike(req, res) {
+async function putLike(req, res, next) {
   try {
     const userId = req.user._id;
     const card = await Card.findByIdAndUpdate(
@@ -11,14 +11,12 @@ async function putLike(req, res) {
     );
 
     if (!card) {
-      const error = new Error('Карточка не найдена');
-      error.name = 'NotFoundError';
-      throw error;
+      throw new NotFoundError('Карточка не найдена');
     }
 
     res.send(card);
   } catch (err) {
-    handleError(err, req, res);
+    next(err);
   }
 }
 
