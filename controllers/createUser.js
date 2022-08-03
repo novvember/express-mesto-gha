@@ -8,13 +8,15 @@ async function createUser(req, res) {
   try {
     const { email, password, name, about, avatar } = req.body;
     const passwordHash = await bcrypt.hash(password, SALT_LENGTH);
-    const user = await User.create({
+    let user = await User.create({
       email,
       password: passwordHash,
       name,
       about,
       avatar,
     });
+    user = user.toObject();
+    delete user.password
     res.send(user);
   } catch (err) {
     handleError(err, req, res);
