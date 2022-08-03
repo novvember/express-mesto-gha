@@ -1,4 +1,5 @@
 const express = require('express');
+// const { celebrate, Joi } = require('celebrate');
 
 const { users } = require('./users');
 const { cards } = require('./cards');
@@ -9,8 +10,11 @@ const { NotFoundError } = require('../errors/NotFoundError');
 
 const routes = express.Router();
 
-routes.post('/signup', express.json(), createUser);
-routes.post('/signin', express.json(), login);
+routes.post('*', express.json());
+
+routes.post('/signup', createUser);
+
+routes.post('/signin', login);
 
 routes.all('*', auth);
 
