@@ -7,7 +7,7 @@ async function login(req, res) {
   try {
     const { email, password } = req.body;
 
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }).select('+password');
 
     if (!user) {
       const error = new Error('Неверные данные для входа');
