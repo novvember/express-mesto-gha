@@ -13,6 +13,13 @@ function handleError(err, req, res) {
     return;
   }
 
+  if (err.name === 'UnauthorizedError') {
+    res.status(401).send({
+      message: err.message,
+    });
+    return;
+  }
+
   if (err.name === 'NotFoundError') {
     res.status(404).send({
       message: err.message,
