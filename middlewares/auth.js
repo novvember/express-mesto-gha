@@ -5,7 +5,7 @@ function auth (req, res, next) {
   const { authorization } = req.headers;
 
     if (!authorization || !authorization.startsWith('Bearer ')) {
-      const error = new Error('Необходима авторизация');
+      const error = new Error('Для выполнения действия необходима авторизация');
       error.name = 'UnauthorizedError';
       handleError(error, req, res);
     }
@@ -16,7 +16,7 @@ function auth (req, res, next) {
     try {
       payload = jwt.verify(token, 'secretkey');
     } catch (err) {
-      const error = new Error('Необходима авторизация');
+      const error = new Error('Для выполнения действия необходима авторизация');
       error.name = 'UnauthorizedError';
       handleError(error, req, res);
     }

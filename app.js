@@ -17,15 +17,6 @@ mongoose
     console.error(err);
   });
 
-// временное решение авторизации пользователя
-app.use((req, res, next) => {
-  req.user = {
-    _id: '62daee18dcd45a620eb5ae4b',
-  };
-
-  next();
-});
-
 app.use(routes);
 
 app.listen(PORT, () => {
