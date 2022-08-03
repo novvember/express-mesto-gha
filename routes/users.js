@@ -9,8 +9,8 @@ const { getCurrentUser } = require('../controllers/getCurrentUser');
 const users = express.Router();
 
 users.get('/', getAllUsers);
-users.get('/:userId', getUser);
 users.get('/me', getCurrentUser);
+users.get('/:userId', getUser);
 users.patch('/me', updateUser);
 users.patch('/me/avatar', updateAvatar);
 
