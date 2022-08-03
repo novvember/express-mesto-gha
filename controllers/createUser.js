@@ -3,8 +3,12 @@ const { handleError } = require('../utils/handleError');
 
 async function createUser(req, res) {
   try {
-    const { name, about, avatar } = req.body;
-    const user = await User.create({ name, about, avatar });
+    const {
+      email, password, name, about, avatar,
+    } = req.body;
+    const user = await User.create({
+      email, password, name, about, avatar,
+    });
     res.send(user);
   } catch (err) {
     handleError(err, req, res);
