@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const { routes } = require('./routes');
+const { handleError } = require('./middlewares/handleError');
 
 const { PORT = 3000 } = process.env;
 const DATABASE_URL = 'mongodb://127.0.0.1:27017/mestodb';
@@ -18,6 +19,8 @@ mongoose
   });
 
 app.use(routes);
+
+app.use(handleError);
 
 app.listen(PORT, () => {
   console.log(`App started on port ${PORT}`);
