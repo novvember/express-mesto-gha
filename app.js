@@ -1,5 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const { errors } = require('celebrate');
+
 const { routes } = require('./routes');
 const { handleError } = require('./middlewares/handleError');
 
@@ -19,6 +21,8 @@ mongoose
   });
 
 app.use(routes);
+
+app.use(errors()); // обработчик ошибок celebrate
 
 app.use(handleError);
 
