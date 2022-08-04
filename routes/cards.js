@@ -34,22 +34,10 @@ cards.post(
   createCard,
 );
 
-cards.delete(
-  '/:cardId',
-  celebrate(paramsValidationConfig),
-  deleteCard,
-);
+cards.delete('/:cardId', celebrate(paramsValidationConfig), deleteCard);
 
-cards.put(
-  '/:cardId/likes',
-  celebrate(paramsValidationConfig),
-  putLike,
-);
+cards.put('/:cardId/likes', celebrate(paramsValidationConfig), putLike);
 
-cards.delete(
-  '/:cardId/likes',
-  celebrate(paramsValidationConfig),
-  deleteLike,
-);
+cards.delete('/:cardId/likes', celebrate(paramsValidationConfig), deleteLike);
 
 module.exports = { cards };
