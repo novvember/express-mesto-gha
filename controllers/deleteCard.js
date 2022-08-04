@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Card } = require('../models/card');
 const { NotFoundError } = require('../errors/NotFoundError');
-const { UnauthorizedError } = require('../errors/UnauthorizedError');
+const { ForbiddenError } = require('../errors/ForbiddenError');
 
 async function deleteCard(req, res, next) {
   try {
@@ -21,7 +21,7 @@ async function deleteCard(req, res, next) {
     const userId = req.user._id;
 
     if (ownerId !== userId) {
-      throw new UnauthorizedError('Удалить можно только свою карточку');
+      throw new ForbiddenError('Нельзя удалить чужую карточку');
     }
 
     await Card.findByIdAndRemove(cardId);
