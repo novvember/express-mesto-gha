@@ -1,5 +1,5 @@
 const { Card } = require('../../models/card');
-const { ValidationError } = require('../../errors/ValidationError');
+const { ValidationError } = require('../../errors');
 
 async function createCard(req, res, next) {
   try {

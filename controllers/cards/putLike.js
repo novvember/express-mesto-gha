@@ -1,5 +1,5 @@
 const { Card } = require('../../models/card');
-const { NotFoundError } = require('../../errors/NotFoundError');
+const { NotFoundError, ValidationError } = require('../../errors');
 
 async function putLike(req, res, next) {
   try {
@@ -16,6 +16,10 @@ async function putLike(req, res, next) {
 
     res.send(card);
   } catch (err) {
+    if (err.name === 'CastError') {
+      next(new ValidationError(`Неверные данные в  ${err.path}`));
+      return;
+    }
     next(err);
   }
 }

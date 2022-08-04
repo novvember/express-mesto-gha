@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const { Card } = require('../../models/card');
-const { NotFoundError } = require('../../errors/NotFoundError');
-const { ForbiddenError } = require('../../errors/ForbiddenError');
+const { NotFoundError, ForbiddenError } = require('../../errors');
 
 async function deleteCard(req, res, next) {
   try {

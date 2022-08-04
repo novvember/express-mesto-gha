@@ -1,5 +1,5 @@
 const { User } = require('../../models/user');
-const { NotFoundError } = require('../../errors/NotFoundError');
+const { NotFoundError, ValidationError } = require('../../errors');
 
 async function getUser(req, res, next) {
   try {
@@ -12,6 +12,10 @@ async function getUser(req, res, next) {
 
     res.send(user);
   } catch (err) {
+    if (err.name === 'CastError') {
+      next(new ValidationError(`Неверные данные в  ${err.path}`));
+      return;
+    }
     next(err);
   }
 }
