@@ -1,6 +1,8 @@
 const express = require('express');
 const { celebrate, Joi } = require('celebrate');
 
+const { validateObjectId } = require('../utils/validateObjectId');
+
 const {
   getAllCards,
   createCard,
@@ -11,7 +13,7 @@ const {
 
 const paramsValidationConfig = {
   params: Joi.object().keys({
-    cardId: Joi.string().alphanum().length(24),
+    cardId: Joi.string().custom(validateObjectId),
   }),
 };
 
