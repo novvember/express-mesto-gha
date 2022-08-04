@@ -1,7 +1,6 @@
 const { Card } = require('../../models/card');
 const { NotFoundError, ValidationError } = require('../../errors');
 
-
 async function deleteLike(req, res, next) {
   try {
     const userId = req.user._id;
