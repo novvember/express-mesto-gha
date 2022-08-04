@@ -3,8 +3,7 @@ const { celebrate, Joi } = require('celebrate');
 
 const { users } = require('./users');
 const { cards } = require('./cards');
-const { login } = require('../controllers/login');
-const { createUser } = require('../controllers/createUser');
+const { login, createUser } = require('../controllers/users');
 const { auth } = require('../middlewares/auth');
 const { NotFoundError } = require('../errors/NotFoundError');
 

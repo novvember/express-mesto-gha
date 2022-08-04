@@ -1,11 +1,13 @@
 const express = require('express');
 const { celebrate, Joi } = require('celebrate');
 
-const { getAllUsers } = require('../controllers/getAllUsers');
-const { getUser } = require('../controllers/getUser');
-const { updateUser } = require('../controllers/updateUser');
-const { updateAvatar } = require('../controllers/updateAvatar');
-const { getCurrentUser } = require('../controllers/getCurrentUser');
+const {
+  getAllUsers,
+  getUser,
+  updateUser,
+  updateAvatar,
+  getCurrentUser,
+} = require('../controllers/users');
 
 const users = express.Router();
 
@@ -37,7 +39,9 @@ users.patch(
   '/me/avatar',
   celebrate({
     body: Joi.object().keys({
-      avatar: Joi.string().regex(/https?:\/\/(www)?[0-9a-z\-._~:/?#[\]@!$&'()*+,;=]+#?$/i),
+      avatar: Joi.string().regex(
+        /https?:\/\/(www)?[0-9a-z\-._~:/?#[\]@!$&'()*+,;=]+#?$/i,
+      ),
     }),
   }),
   updateAvatar,

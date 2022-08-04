@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
-const { User } = require('../models/user');
-const { ConflictError } = require('../errors/ConflictError');
+const { User } = require('../../models/user');
+const { ConflictError } = require('../../errors/ConflictError');
 
 const SALT_LENGTH = 10;
 

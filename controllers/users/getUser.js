@@ -1,5 +1,5 @@
-const { User } = require('../models/user');
-const { NotFoundError } = require('../errors/NotFoundError');
+const { User } = require('../../models/user');
+const { NotFoundError } = require('../../errors/NotFoundError');
 
 async function getUser(req, res, next) {
   try {

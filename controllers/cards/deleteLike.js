@@ -1,12 +1,13 @@
-const { Card } = require('../models/card');
-const { NotFoundError } = require('../errors/NotFoundError');
+const { Card } = require('../../models/card');
+const { NotFoundError } = require('../../errors/NotFoundError');
 
-async function putLike(req, res, next) {
+
+async function deleteLike(req, res, next) {
   try {
     const userId = req.user._id;
     const card = await Card.findByIdAndUpdate(
       req.params.cardId,
-      { $addToSet: { likes: userId } }, // добавить _id в массив, если его там нет
+      { $pull: { likes: userId } }, // убрать _id из массива, если он есть
       { new: true },
     );
 
@@ -20,4 +21,4 @@ async function putLike(req, res, next) {
   }
 }
 
-module.exports = { putLike };
+module.exports = { deleteLike };

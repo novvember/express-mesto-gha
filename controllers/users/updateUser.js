@@ -1,4 +1,4 @@
-const { User } = require('../models/user');
+const { User } = require('../../models/user');
 
 async function updateUser(req, res, next) {
   try {
