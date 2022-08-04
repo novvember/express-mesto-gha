@@ -1,4 +1,5 @@
 const { Card } = require('../../models/card');
+const { ValidationError } = require('../../errors/ValidationError');
 
 async function createCard(req, res, next) {
   try {
@@ -7,6 +8,11 @@ async function createCard(req, res, next) {
     const card = await Card.create({ name, link, owner: ownerId });
     res.status(201).send(card);
   } catch (err) {
+    if (err.name === 'CastError') {
+      next(new ValidationError(`Неверные данные в  ${err.path}`));
+      return;
+    }
+
     next(err);
   }
 }
