@@ -9,8 +9,7 @@ const { NotFoundError } = require('../errors');
 
 const routes = express.Router();
 
-routes.post('*', express.json());
-routes.patch('*', express.json());
+routes.all('*', express.json());
 
 routes.post(
   '/signup',
