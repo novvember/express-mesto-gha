@@ -9,6 +9,12 @@ const {
   deleteLike,
 } = require('../controllers/cards');
 
+const paramsValidationConfig = {
+  params: Joi.object().keys({
+    cardId: Joi.string().alphanum().length(24),
+  }),
+};
+
 const cards = express.Router();
 
 cards.get('/', getAllCards);
@@ -28,31 +34,19 @@ cards.post(
 
 cards.delete(
   '/:cardId',
-  celebrate({
-    params: Joi.object().keys({
-      cardId: Joi.string().alphanum().length(24),
-    }),
-  }),
+  celebrate(paramsValidationConfig),
   deleteCard,
 );
 
 cards.put(
   '/:cardId/likes',
-  celebrate({
-    params: Joi.object().keys({
-      cardId: Joi.string().alphanum().length(24),
-    }),
-  }),
+  celebrate(paramsValidationConfig),
   putLike,
 );
 
 cards.delete(
   '/:cardId/likes',
-  celebrate({
-    params: Joi.object().keys({
-      cardId: Joi.string().alphanum().length(24),
-    }),
-  }),
+  celebrate(paramsValidationConfig),
   deleteLike,
 );
 
