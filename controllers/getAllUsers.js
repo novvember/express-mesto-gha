@@ -1,12 +1,11 @@
 const { User } = require('../models/user');
-const { handleError } = require('../utils/handleError');
 
-async function getAllUsers(req, res) {
+async function getAllUsers(req, res, next) {
   try {
     const users = await User.find({});
     res.send(users);
   } catch (err) {
-    handleError(err, req, res);
+    next(err);
   }
 }
 

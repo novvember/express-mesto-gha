@@ -1,7 +1,6 @@
 const { User } = require('../models/user');
-const { handleError } = require('../utils/handleError');
 
-async function updateUser(req, res) {
+async function updateUser(req, res, next) {
   try {
     const userId = req.user._id;
     const { name, about } = req.body;
@@ -12,7 +11,7 @@ async function updateUser(req, res) {
     );
     res.send(user);
   } catch (err) {
-    handleError(err, req, res);
+    next(err);
   }
 }
 
