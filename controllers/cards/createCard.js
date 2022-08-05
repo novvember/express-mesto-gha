@@ -8,8 +8,8 @@ async function createCard(req, res, next) {
     const card = await Card.create({ name, link, owner: ownerId });
     res.status(201).send(card);
   } catch (err) {
-    if (err.name === 'CastError') {
-      next(new ValidationError(`Неверные данные в  ${err.path}`));
+    if (err.name === 'CastError' || err.name === 'ValidationError') {
+      next(new ValidationError(`Неверные данные в ${err.path ?? 'запросе'}`));
       return;
     }
 
