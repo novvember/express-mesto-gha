@@ -16,8 +16,8 @@ async function deleteLike(req, res, next) {
 
     res.send(card);
   } catch (err) {
-    if (err.name === 'CastError') {
-      next(new ValidationError(`Неверные данные в  ${err.path}`));
+    if (err.name === 'CastError' || err.name === 'ValidationError') {
+      next(new ValidationError(`Неверные данные в ${err.path ?? 'запросе'}`));
       return;
     }
     next(err);

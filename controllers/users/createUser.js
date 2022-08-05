@@ -23,8 +23,8 @@ async function createUser(req, res, next) {
     delete user.password;
     res.status(201).send(user);
   } catch (err) {
-    if (err.name === 'CastError') {
-      next(new ValidationError(`Неверные данные в  ${err.path}`));
+    if (err.name === 'CastError' || err.name === 'ValidationError') {
+      next(new ValidationError(`Неверные данные в ${err.path ?? 'запросе'}`));
       return;
     }
     if (err.code === 11000) {
