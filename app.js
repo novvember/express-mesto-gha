@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
+const helmet = require('helmet');
 
 const { routes } = require('./routes');
 const { handleError } = require('./middlewares/handleError');
@@ -19,6 +20,8 @@ mongoose
     console.log('Error on database connection');
     console.error(err);
   });
+
+app.use(helmet());
 
 app.use(routes);
 
