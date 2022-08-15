@@ -6,6 +6,7 @@ const rateLimit = require('express-rate-limit');
 
 const { routes } = require('./routes');
 const { handleError } = require('./middlewares/handleError');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { PORT = 3000 } = process.env;
 const DATABASE_URL = 'mongodb://127.0.0.1:27017/mestodb';
@@ -29,9 +30,13 @@ mongoose
 
 app.use(limiter);
 
+app.use(requestLogger);
+
 app.use(helmet());
 
 app.use(routes);
+
+app.use(errorLogger);
 
 app.use(errors()); // обработчик ошибок celebrate
 
