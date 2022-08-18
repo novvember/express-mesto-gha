@@ -4,10 +4,13 @@
 
 Сервер для проекта Mesto
 
-Продолжение работы над проектом Mesto:
+Это часть работы над проектом Mesto:
+
 1. [Mesto](https://github.com/novvember/mesto)
 2. [Mesto (версия на React)](https://github.com/novvember/mesto-react)
 3. [Mesto (версия на авторизацией и регистрацией)](https://github.com/novvember/react-mesto-auth)
+4. Mesto (версия для сервера ⬅ *этот репозиторий*
+5. [Mesto (версия с фронтендом и бэкендом)](https://github.com/novvember/react-mesto-api-full)
 
 Выполнен в рамках серии проектных работ в Яндекс.Практикуме по профессии «Веб-разработчик» (от начала изучения бекэнда, спринт 13, и далее).
 
@@ -24,4 +27,6 @@
 - Mongoose
 
 ## Статус разработки
-*Ведется разработка*
+✅ *Завершено*
+
+Дальнейшая разработка ведется в репозитории [Mesto (версия с фронтендом и бэкендом)](https://github.com/novvember/react-mesto-api-full)
